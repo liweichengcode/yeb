@@ -2,8 +2,8 @@ package com.xxxx.server.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xxxx.server.pojo.Admin;
-import com.xxxx.server.pojo.Menu;
 import com.xxxx.server.pojo.Role;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,16 +18,16 @@ import java.util.List;
 public interface AdminMapper extends BaseMapper<Admin> {
 
     /**
-     * 根据用户Id查询菜单列表
-     * @param id
-     * @return
-     */
-    List<Menu> getMenusByAdminId(Integer id);
-
-    /**
      * 根据用户ID查询角色列表
      * @param adminId
      * @return
      */
     List<Role> getRoles(Integer adminId);
+
+    /**
+     * 获取所有操作员
+     * @param id
+     * @param keywords
+     */
+    List<Admin> getAllAdmins(@Param("id") Integer id, @Param("keywords") String keywords);
 }
